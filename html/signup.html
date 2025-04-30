@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Create an Account</title>
+    <link rel="stylesheet" href="/styles/styles.css" />
+</head>
+<body>
+    <div id="Logo">
+        <a><img src="/img/logo.gif" alt="MyJournal" border="0"></a>
+    </div>
+
+    <ul id="NavMenuList">
+        <li>
+            <a href="/" onmouseover="javascript:show(0)" onfocus="javascript:show(0)" id="Menu0">Welcome</a>
+            <ul class="NavSubMenuList" style="visibility: hidden;">
+                <li><a href="/signin">Login</a></li>
+                <li><a href="/signup">Create an Account</a></li>
+            </ul>
+        </li>
+        <li>
+            <a href="/" onmouseover="javascript:show(1)" onfocus="javascript:show(1)" id="Menu1">Help</a>
+            <ul class="NavSubMenuList" style="visibility: hidden;">
+                <li><a href="/faq"><abbr title="Frequently Asked Questions">FAQ</abbr></a></li>
+                <li><a href="/contact">Contact Info</a></li>
+            </ul>
+        </li>
+    </ul>
+
+    <div id="Content">
+        <h1>Create New Account</h1>
+        <p>
+            Creating a new Account is easy, just follow the instructions below!
+        </p>
+        <form action="/api/user/signup" method="post">
+            <ol>
+                <li>
+                    <div class="formitem">
+                        <div class="formitemName">Username:</div>
+                        <div class="formitemDesc">
+                            Each MyJournal user must have their own unique username.  Your username is what appears in the address to your journal and what you use to log into the MyJournal server.  It also shows up when you post comments in other people's journal.
+                        </div>
+                        <input type="text" maxlength="15" value="" size="15" name="username" style="background: url(/img/userpic.gif) no-repeat; background-color: #fff; background-position: 0px 1px; padding-left: 18px; color: #78ACDC; font-weight: bold;">
+                        <div class="formitemNote">
+                            Your username may contain only lower-case letters (a-z), digits (0-9) and the underscore character (_).
+                            <br>
+                            Additionally, it must not be longer than 15 characters.
+                        </div>
+                    </div>
+                </li>
+                <li>
+                    <div class="formitem">
+                        <div class="formitemName">Password:</div>
+                        <div class="formitemDesc">Select a password:</div>
+                        <input type="password" maxlength="31" value="" size="30" name="password1">
+                        <div class="formitemDesc">Confirm password:</div>
+                        <input type="password" maxlength="31" value="" size="30" name="password2">
+                    </div>
+                </li>
+            </ol>
+            <div style="width:600; text-align: center">
+                <input type="submit" value="Create Account">
+            </div>
+        </form>
+    </div>
+    
+    <div id="footer">
+        © {{.CurrentYear}} MyJournal
+    </div>
+
+    <script type="text/javascript">       
+        var cmenu = null;
+        var csubmenu = null;
+
+        function show(id)
+        {
+            var menu = document.getElementById("Menu" + id);
+            var menus = document.getElementById("NavMenuList");
+            var submenu = menus.getElementsByTagName("ul").item(id);
+            if (csubmenu == null) {
+                submenu.style.visibility = "visible";
+            } else {
+                csubmenu.style.visibility = "hidden";
+                submenu.style.visibility = "visible";
+            }
+            if (cmenu == null) {
+                menu.style.backgroundColor = "#FFF";
+                menu.style.color = "#000";
+            } else {
+                cmenu.style.backgroundColor = "#036"; // "#036";
+                cmenu.style.color = "#FFF";
+                menu.style.backgroundColor = "#FFF";
+                menu.style.color = "#000";
+            }
+            cmenu = menu;
+            csubmenu = submenu;
+        }
+    </script>
+</body>
+</html>

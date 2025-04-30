@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Update Journal</title>
+    <link rel="stylesheet" href="/styles/styles.css" />
+</head>
+<body>
+    <div id="Logo">
+        <a><img src="/img/logo.gif" alt="MyJournal" border="0"></a>
+    </div>
+
+    <div id="Greeting" class="nopic">
+        <div>Welcome, {{.User.Username}}! <a href="/api/user/logout">[Log Out]</a></div>
+    </div>
+
+    <ul id="NavMenuList">
+        <li>
+            <a href="/" onmouseover="javascript:show(0)" onfocus="javascript:show(0)" id="Menu0">Welcome</a>
+            <ul class="NavSubMenuList" style="visibility: hidden;"></ul>
+        </li>
+        <li>
+            <a href="/" onmouseover="javascript:show(1)" onfocus="javascript:show(1)" id="Menu1">Journal</a>
+            <ul class="NavSubMenuList" style="visibility: hidden;">
+                <li><a href="/journal">View Posts</a></li>
+                <li><a href="/update">Update Journal</a></li>
+            </ul>
+        </li>
+        <li>
+            <a href="/" onmouseover="javascript:show(2)" onfocus="javascript:show(2)" id="Menu2">Help</a>
+            <ul class="NavSubMenuList" style="visibility: hidden;">
+                <li><a href="/faq"><abbr title="Frequently Asked Questions">FAQ</abbr></a></li>
+                <li><a href="/contact">Contact Info</a></li>
+            </ul>
+        </li>
+    </ul>
+
+    <div id="Content">
+        <h1>Update Journal</h1>
+        <p>
+            You can use this page to update your journal. Fill in all the fields and click the “Update Journal” button.
+        </p>
+        <hr>
+        <div style="width: 90%">
+            <form method="post" action="/api/journal/update" id="updateForm" name="updateForm">
+                <table align="center" width="80%">
+                    <tbody>
+                        <tr>
+                            <td width="70%"></td>
+                            <td>
+                                <table cellspacing="0" cellpading="0">
+                                    <tbody>
+                                        <tr valign="top">
+                                            <td align="right" rowspan="2">
+                                                <b>Date:</b>
+                                                 
+                                            </td>
+                                            <td nowrap="nowrap">
+                                                <input type="text" maxlength="4" size="5" value="1970" name="year"/>
+                                                -
+                                                <input type="text" maxlength="2" size="3" value="01" name="mon"/>
+                                                -
+                                                <input type="text" maxlength="2" size="3" value="01" name="day"/>
+                                            </td>
+                                        </tr>
+                                        <tr valign="top">
+                                            <td>
+                                                <i>(yyyy-mm-dd)</i>
+                                            </td>
+                                        </tr>
+                                        <tr valign="top">
+                                            <td align="right" rowspan="2">
+                                                <b>Local time:</b>
+                                                 
+                                            </td>
+                                            <td nowrap="nowrap">
+                                                <input type="text" maxlength="2" size="3" value="00" name="hour">
+                                                :
+                                                <input type="text" maxlength="2" size="3" value="00" name="min">
+                                            </td>
+                                        </tr>
+                                        <tr valign="top">
+                                            <td>
+                                                <i>(24 hour time)</i>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <table width="90%" align="center" ;="" style="margin-top: 20px;">
+                    <tbody>
+                        <tr>
+                            <td>
+                                <b>Subject:</b>
+                                <br>
+                                <input type="text" maxlength="100" size="50" value="" name="subject">
+                                <p>
+                                    <b>Event:</b>
+                                    <br>
+                                    <textarea style="width: 100%;" wrap="soft" cols="50" rows="20" name="event"></textarea>
+                                </p>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <p align="center" style="margin-top: 0px;">
+                    <input type="submit" value="Update Journal" onclick="">
+                </p>
+            </form>
+        </div>    
+    </div>
+    
+    <div id="footer">
+        © {{.CurrentYear}} MyJournal
+    </div>
+
+    <script type="text/javascript">       
+        var cmenu = null;
+        var csubmenu = null;
+
+        function show(id)
+        {
+            var menu = document.getElementById("Menu" + id);
+            var menus = document.getElementById("NavMenuList");
+            var submenu = menus.getElementsByTagName("ul").item(id);
+            if (csubmenu == null) {
+                submenu.style.visibility = "visible";
+            } else {
+                csubmenu.style.visibility = "hidden";
+                submenu.style.visibility = "visible";
+            }
+            if (cmenu == null) {
+                menu.style.backgroundColor = "#FFF";
+                menu.style.color = "#000";
+            } else {
+                cmenu.style.backgroundColor = "#036"; // "#036";
+                cmenu.style.color = "#FFF";
+                menu.style.backgroundColor = "#FFF";
+                menu.style.color = "#000";
+            }
+            cmenu = menu;
+            csubmenu = submenu;
+        }
+    </script>
+</body>
+</html>

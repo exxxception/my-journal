@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MyJournal</title>
+    <link rel="stylesheet" href="/styles/styles.css" />
+</head>
+<body>
+    <div id="Logo">
+        <a><img src="/img/logo.gif" alt="MyJournal" border="0"></a>
+    </div>
+
+    <div id="Greeting" class="nopic">
+        <div>Welcome, {{.User.Username}}! <a href="/api/user/logout">[Log Out]</a></div>
+    </div>
+
+    <ul id="NavMenuList">
+        <li>
+            <a href="/" onmouseover="javascript:show(0)" onfocus="javascript:show(0)" id="Menu0">Welcome</a>
+            <ul class="NavSubMenuList" style="visibility: hidden;"></ul>
+        </li>
+        <li>
+            <a href="/" onmouseover="javascript:show(1)" onfocus="javascript:show(1)" id="Menu1">Journal</a>
+            <ul class="NavSubMenuList" style="visibility: hidden;">
+                <li><a href="/journal">View Posts</a></li>
+                <li><a href="/update">Update Journal</a></li>
+            </ul>
+        </li>
+        <li>
+            <a href="/" onmouseover="javascript:show(2)" onfocus="javascript:show(2)" id="Menu2">Help</a>
+            <ul class="NavSubMenuList" style="visibility: hidden;">
+                <li><a href="/faq"><abbr title="Frequently Asked Questions">FAQ</abbr></a></li>
+                <li><a href="/contact">Contact Info</a></li>
+            </ul>
+        </li>
+    </ul>
+
+    <div id="Content">
+        <h1>Post Successful!</h1>
+        <p>
+            What do you want to do next?
+        </p>
+        <ul>
+            <li><a href="/journal">View my posts</a></li>
+            <li><a href="/update">Create a new post</a></li>
+        </ul>
+    </div>
+    
+    <div id="footer">
+        © {{.CurrentYear}} MyJournal
+    </div>
+
+    <script type="text/javascript">       
+        var cmenu = null;
+        var csubmenu = null;
+
+        function show(id)
+        {
+            var menu = document.getElementById("Menu" + id);
+            var menus = document.getElementById("NavMenuList");
+            var submenu = menus.getElementsByTagName("ul").item(id);
+            if (csubmenu == null) {
+                submenu.style.visibility = "visible";
+            } else {
+                csubmenu.style.visibility = "hidden";
+                submenu.style.visibility = "visible";
+            }
+            if (cmenu == null) {
+                menu.style.backgroundColor = "#FFF";
+                menu.style.color = "#000";
+            } else {
+                cmenu.style.backgroundColor = "#036"; // "#036";
+                cmenu.style.color = "#FFF";
+                menu.style.backgroundColor = "#FFF";
+                menu.style.color = "#000";
+            }
+            cmenu = menu;
+            csubmenu = submenu;
+        }
+    </script>
+</body>
+</html>

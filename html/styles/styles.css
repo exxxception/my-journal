@@ -1,0 +1,213 @@
+body {
+    font-family: Verdana, Arial, Helvetica, sans-serif;
+    font-size: 12px;
+    color: #333;
+    background-color: #fff;
+    margin: 0;
+    padding: 0;
+    line-height: 1.5;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+
+    background: #ffffff url(/img/header.gif) repeat-x;
+}
+
+a:link {
+    color: #78ACDC; background-color: transparent; /*#00C*/
+}
+a:visited {
+    color: #70A4D8; background-color: transparent; /*#306*/
+}
+a:active {
+    color: #F60; background-color: transparent;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+#Logo {
+    height: 68px;
+    background-color: transparent;
+}
+#Logo img {
+    border: 0;
+}
+
+#Greeting {
+    position: absolute;
+    left: auto; right: 112px; top: 15px;
+    width: auto; height: 20px;
+    text-align: right;
+    color: #FFF; background-color: transparent;
+    font: 12px Arial, Helvetica, sans-serif;
+}
+#Greeting.nopic {
+    right: 50px;
+}
+#Greeting a {
+    color: #FFF; background-color: #69C;
+    font-weight: normal;
+}
+#Greeting a b {
+    font-weight: normal;
+}
+
+/* Content */
+#Content {
+    /* display: flex;
+    flex: 1; */
+    margin: 60px 80px 0 50px;
+    padding-bottom: 20px;
+}
+
+h1 {
+    margin: 0 0 0.5em 0;
+    padding: 0;
+    font-size: x-large;
+    font-weight: bold;
+    color: #036;
+}
+
+h2 {
+    margin: 0.3em 0 0.1em 0;
+    padding: 0;
+    font-size: large;
+    font-weight: normal;
+    color: #036;
+}
+
+.formitem {
+    color: #343434;
+    font-size: 1em;
+}
+
+.formitemName {
+    font-weight: bold;
+    font-size: .9em;
+    margin-top: 1.8em;
+}
+
+.formitemDesc {
+    margin-top: .4em;
+    margin-bottom: .4em;
+    color: #505050;
+}
+
+.formitemNote {
+    color: #da6320;
+    font-size: .9em;
+    margin-top: .4em;
+    margin-bottom: .4em;
+}
+
+hr {
+    border: 0;
+    width: 80%;
+    color: #369;
+    background-color: #369;
+    height: 2px;
+}
+
+.standout {
+    text-align: center;
+}
+.standout .container {
+    color: #000; background-color: #c5dff9;
+    border: 1px solid #8fc3f7;
+    padding: 3px;
+
+    margin-top: auto; margin-bottom: auto;
+    margin-left: auto; margin-right: auto;
+    width: auto;
+    text-align: left;
+}
+
+.error {
+    color: #da2020;
+    font-size: .9em;
+    margin-top: .4em;
+    margin-bottom: .4em;
+}
+
+/* Navigate  */
+#NavMenuList {
+    position: absolute;
+    left: 60px; top: 60px;
+    height: 40px; width: 90%;
+    margin: 0; padding: 0;
+    display: inline; white-space: nowrap;
+    clear: both;
+}
+#NavMenuList li {
+    display: inline;
+    list-style: none;
+    white-space: nowrap;
+}
+#NavMenuList a {
+    padding: 2px 10px 1px 10px;
+    width: auto; height: 16px;
+    color: #FFF; background-color: #036; /* #036 */
+    font: 11px Arial, Geneva, Helvetica, sans-serif;
+    text-decoration: none;
+    float: left; display: block;
+    border-top: 1px solid #FFF;
+}
+#NavMenuList a.preextra {
+    padding: 2px 1px 1px 10px;
+    width: auto; height: 16px;
+    color: #FFF; background-color: #69C; /* #69C */
+    font: 11px Arial, Geneva, Helvetica, sans-serif;
+    text-decoration: none;
+    float: left;
+}
+#NavMenuList a.extra {
+    padding: 2px 10px 1px 1px;
+    width: auto; height: 16px;
+    color: #FFF; background-color: #69C; /* #69C */
+    font: 11px Arial, Geneva, Helvetica, sans-serif;
+    text-decoration: none;
+    float: left;
+    font-weight: bold;
+}
+#NavMenuList a:hover {
+    color: #000; background-color: #FFF;
+}
+#NavMenuList .NavSubMenuList {
+    visibility: hidden;
+    left: 0; top: 20px;
+    position: absolute; height: 20px;
+    width: 100%; display: inline; white-space: nowrap;
+    margin: 0; padding: 0; border: 0px;
+}
+#NavMenuList .NavSubMenuList li a {
+    color: #FFF; background-color: #69C; /* #69C */
+    float: left;
+}
+#NavMenuList .NavSubMenuList li a:hover {
+    color: #000; background-color: #FFF;
+}
+#NavMenuListTitle {
+    display: none;
+}
+/* End Navigate  */
+
+/* Footer */
+#footer {
+    /* text-align: center;
+    height: 20px;
+    color: #FFF;
+    background-color: #69C; */
+
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    text-align: center;
+    height: 20px;
+    color: #FFF;
+    background-color: #69C;
+    z-index: 1000;
+}
+/* End Footer */

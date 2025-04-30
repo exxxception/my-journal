@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MyJournal</title>
+    <link rel="stylesheet" href="/styles/styles.css" />
+</head>
+<body>
+    <div id="Logo">
+        <a><img src="/img/logo.gif" alt="MyJournal" border="0"></a>
+    </div>
+
+    <div id="Greeting" class="nopic">
+        <div>Welcome, {{.User.Username}}! <a href="/api/user/logout">[Log Out]</a></div>
+    </div>
+
+    <ul id="NavMenuList">
+        <li>
+            <a href="/" onmouseover="javascript:show(0)" onfocus="javascript:show(0)" id="Menu0">Welcome</a>
+            <ul class="NavSubMenuList" style="visibility: hidden;"></ul>
+        </li>
+        <li>
+            <a href="/" onmouseover="javascript:show(1)" onfocus="javascript:show(1)" id="Menu1">Journal</a>
+            <ul class="NavSubMenuList" style="visibility: hidden;">
+                <li><a href="/journal">View Posts</a></li>
+                <li><a href="/update">Update Journal</a></li>
+            </ul>
+        </li>
+        <li>
+            <a href="/" onmouseover="javascript:show(2)" onfocus="javascript:show(2)" id="Menu2">Help</a>
+            <ul class="NavSubMenuList" style="visibility: hidden;">
+                <li><a href="/faq"><abbr title="Frequently Asked Questions">FAQ</abbr></a></li>
+                <li><a href="/contact">Contact Info</a></li>
+            </ul>
+        </li>
+    </ul>
+
+    <div id="Content">
+        <h1>Your Posts</h1>
+        <p>Current posting stats: <b>{{.Number}}</b> posts</p>
+        <table border="0" cellpadding="4" style="margin-top: 10px;">
+            <tbody>
+                {{range .Posts}}
+                <tr valign="top">
+                    <td nowrap="nowrap"><a href="">{{.CreatedAt.Format "2 January 2006, 15:04"}}</a></td>
+                    <td>
+                        <span class="user" style="white-space: nowrap;">
+                            <img src="/img/userpic.gif" alt="[info]" width="17" height="17" style="vertical-align: bottom; border: 0;">
+                            <a href=""><b>{{$.User.Username}}</b></a>
+                            :
+                            <b>{{.Subject}}</b>
+                        </span>
+                        <br>
+                        <div class="event" style="margin-left: 20px;">{{.Event}}</div>
+                    </td>
+                </tr>
+                {{end}}
+            </tbody>
+        </table>
+    </div>
+    
+    <div id="footer">
+        © {{.CurrentYear}} MyJournal
+    </div>
+
+    <script type="text/javascript">       
+        var cmenu = null;
+        var csubmenu = null;
+
+        function show(id)
+        {
+            var menu = document.getElementById("Menu" + id);
+            var menus = document.getElementById("NavMenuList");
+            var submenu = menus.getElementsByTagName("ul").item(id);
+            if (csubmenu == null) {
+                submenu.style.visibility = "visible";
+            } else {
+                csubmenu.style.visibility = "hidden";
+                submenu.style.visibility = "visible";
+            }
+            if (cmenu == null) {
+                menu.style.backgroundColor = "#FFF";
+                menu.style.color = "#000";
+            } else {
+                cmenu.style.backgroundColor = "#036"; // "#036";
+                cmenu.style.color = "#FFF";
+                menu.style.backgroundColor = "#FFF";
+                menu.style.color = "#000";
+            }
+            cmenu = menu;
+            csubmenu = submenu;
+        }
+    </script>
+</body>
+</html>

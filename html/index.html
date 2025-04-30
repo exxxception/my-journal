@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MyJournal</title>
+    <link rel="stylesheet" href="/styles/styles.css" />
+</head>
+<body>
+    <div id="Logo">
+        <a><img src="/img/logo.gif" alt="MyJournal" border="0"></a>
+    </div>
+
+    <div id="Greeting" class="nopic">
+            {{if .User}}
+                <div>Welcome, {{.User.Username}}! <a href="/api/user/logout">[Log Out]</a></div>
+            {{else}}
+                <form id="login" action="/api/user/signin" method="POST">
+                    <label for="username">Username:</label>
+                    <input type="text" name="username" size="15" maxlength="15" tabindex="1" id="username" value="" style="background: url(/img/userpic.gif) no-repeat; background-color: #fff; background-position: 0px 1px; padding-left: 18px; color: #78ACDC; font-weight: bold;">
+                    <label for="password">Password:</label>
+                    <input type="password" name="password" size="10" tabindex="2" id="password">
+                    <input type="submit" value="Login" tabindex="3">
+                </form>
+            {{end}}
+
+            {{if .Error}}
+            <div class="error">
+                <b>{{.Error}}</b>
+            </div>
+            {{end}}
+    </div>
+
+    {{if .User}}
+    <ul id="NavMenuList">
+        <li>
+            <a href="/" onmouseover="javascript:show(0)" onfocus="javascript:show(0)" id="Menu0">Welcome</a>
+            <ul class="NavSubMenuList" style="visibility: hidden;"></ul>
+        </li>
+        <li>
+            <a href="/" onmouseover="javascript:show(1)" onfocus="javascript:show(1)" id="Menu1">Journal</a>
+            <ul class="NavSubMenuList" style="visibility: hidden;">
+                <li><a href="/journal">View Posts</a></li>
+                <li><a href="/update">Update Journal</a></li>
+            </ul>
+        </li>
+        <li>
+            <a href="/" onmouseover="javascript:show(2)" onfocus="javascript:show(2)" id="Menu2">Help</a>
+            <ul class="NavSubMenuList" style="visibility: hidden;">
+                <li><a href="/faq"><abbr title="Frequently Asked Questions">FAQ</abbr></a></li>
+                <li><a href="/contact">Contact Info</a></li>
+            </ul>
+        </li>
+    </ul>
+    {{else}}
+    <ul id="NavMenuList">
+        <li>
+            <a href="/" onmouseover="javascript:show(0)" onfocus="javascript:show(0)" id="Menu0">Welcome</a>
+            <ul class="NavSubMenuList" style="visibility: hidden;">
+                <li><a href="/signin">Login</a></li>
+                <li><a href="/signup">Create an Account</a></li>
+            </ul>
+        </li>
+        <li>
+            <a href="/" onmouseover="javascript:show(1)" onfocus="javascript:show(1)" id="Menu1">Help</a>
+            <ul class="NavSubMenuList" style="visibility: hidden;">
+                <li><a href="/faq"><abbr title="Frequently Asked Questions">FAQ</abbr></a></li>
+                <li><a href="/contact">Contact Info</a></li>
+            </ul>
+        </li>
+    </ul>
+    {{end}}
+
+    <div id="Content">
+        <h1>Welcome to MyJournal!</h2>
+        <p>
+            Please <a href="/signup">create new account</a> or <a href="/signin">log in</a> to an existing.
+        </p>
+    </div>
+    
+    <div id="footer">
+        © {{.CurrentYear}} MyJournal
+    </div>
+
+    <script type="text/javascript">       
+        var cmenu = null;
+        var csubmenu = null;
+
+        function show(id)
+        {
+            var menu = document.getElementById("Menu" + id);
+            var menus = document.getElementById("NavMenuList");
+            var submenu = menus.getElementsByTagName("ul").item(id);
+            if (csubmenu == null) {
+                submenu.style.visibility = "visible";
+            } else {
+                csubmenu.style.visibility = "hidden";
+                submenu.style.visibility = "visible";
+            }
+            if (cmenu == null) {
+                menu.style.backgroundColor = "#FFF";
+                menu.style.color = "#000";
+            } else {
+                cmenu.style.backgroundColor = "#036"; // "#036";
+                cmenu.style.color = "#FFF";
+                menu.style.backgroundColor = "#FFF";
+                menu.style.color = "#000";
+            }
+            cmenu = menu;
+            csubmenu = submenu;
+        }
+    </script>
+</body>
+</html>
