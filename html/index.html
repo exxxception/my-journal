@@ -17,17 +17,11 @@
             {{else}}
                 <form id="login" action="/api/user/signin" method="POST">
                     <label for="username">Username:</label>
-                    <input type="text" name="username" size="15" maxlength="15" tabindex="1" id="username" value="" style="background: url(/img/userpic.gif) no-repeat; background-color: #fff; background-position: 0px 1px; padding-left: 18px; color: #78ACDC; font-weight: bold;">
+                    <input type="text" name="username" size="15" maxlength="15" required="" tabindex="1" id="username" value="" style="background: url(/img/userpic.gif) no-repeat; background-color: #fff; background-position: 0px 1px; padding-left: 18px; color: #78ACDC; font-weight: bold;">
                     <label for="password">Password:</label>
-                    <input type="password" name="password" size="10" tabindex="2" id="password">
+                    <input type="password" name="password" size="10" required="" tabindex="2" id="password">
                     <input type="submit" value="Login" tabindex="3">
                 </form>
-            {{end}}
-
-            {{if .Error}}
-            <div class="error">
-                <b>{{.Error}}</b>
-            </div>
             {{end}}
     </div>
 

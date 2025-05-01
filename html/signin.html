@@ -42,26 +42,32 @@
                     <tbody>
                         <tr>
                             <td>
-                                <table border="0" cellpadding="3">
+                                <table cellpadding="3">
                                     <tbody>
                                         <tr>
                                             <td>Username:</td>
                                             <td>
-                                                <input type="text" maxlength="15" value="" size="15" name="username" style="background: url(/img/userpic.gif) no-repeat; background-color: #fff; background-position: 0px 1px; padding-left: 18px; color: #78ACDC; font-weight: bold;">
+                                                <input type="text" maxlength="15" value="" size="15" required="" name="username" style="background: url(/img/userpic.gif) no-repeat; background-color: #fff; background-position: 0px 1px; padding-left: 18px; color: #78ACDC; font-weight: bold;">
                                             </td>
                                         </tr>
                                         <tr>
                                             <td valign="top">Password:</td>
                                             <td>
-                                                <input type="password" name="password" id="password" size="15" maxlength="30">
+                                                <input type="password" name="password" id="password" size="15" maxlength="30" required="">
                                                 <br>
                                                 <a href="/faq"><font size="1">Forget?</font></a>
+
+                                                {{if .Error}}
+                                                <div class="error">
+                                                    {{.Error}}
+                                                </div>
+                                                {{end}}
                                             </td>
                                         </tr>
                                         <tr>
                                             <td></td>
-                                            <td align="left">
-                                                <input name="action:login" onclick="return sendForm()" type="submit" value="Log in...">
+                                            <td>
+                                                <input name="action:login" type="submit" value="Log in...">
                                             </td>
                                         </tr>
                                     </tbody>

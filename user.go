@@ -52,7 +52,7 @@ func GetUserByUsername(username string, user *User) error {
 }
 
 func ReportLoginError(w http.ResponseWriter) {
-	tmpl := template.Must(template.ParseFiles("html/index.html"))
+	tmpl := template.Must(template.ParseFiles("html/signin.html"))
 
 	data := map[string]interface{}{
 		"Error":       "Invalid username or password",

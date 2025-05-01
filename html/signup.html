@@ -41,7 +41,7 @@
                         <div class="formitemDesc">
                             Each MyJournal user must have their own unique username.  Your username is what appears in the address to your journal and what you use to log into the MyJournal server.  It also shows up when you post comments in other people's journal.
                         </div>
-                        <input type="text" maxlength="15" value="" size="15" name="username" style="background: url(/img/userpic.gif) no-repeat; background-color: #fff; background-position: 0px 1px; padding-left: 18px; color: #78ACDC; font-weight: bold;">
+                        <input type="text" maxlength="15" value="" size="15" required="" name="username" style="background: url(/img/userpic.gif) no-repeat; background-color: #fff; background-position: 0px 1px; padding-left: 18px; color: #78ACDC; font-weight: bold;">
                         <div class="formitemNote">
                             Your username may contain only lower-case letters (a-z), digits (0-9) and the underscore character (_).
                             <br>
@@ -53,9 +53,9 @@
                     <div class="formitem">
                         <div class="formitemName">Password:</div>
                         <div class="formitemDesc">Select a password:</div>
-                        <input type="password" maxlength="31" value="" size="30" name="password1">
+                        <input type="password" maxlength="31" value="" size="30" name="password1" required="">
                         <div class="formitemDesc">Confirm password:</div>
-                        <input type="password" maxlength="31" value="" size="30" name="password2">
+                        <input type="password" maxlength="31" value="" size="30" name="password2" required="">
                     </div>
                 </li>
             </ol>
